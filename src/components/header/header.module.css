@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10 px 0;
+    margin-bottom: 20px;
+}
+
+.titleContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
