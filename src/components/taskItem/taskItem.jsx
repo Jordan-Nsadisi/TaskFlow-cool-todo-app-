@@ -2,7 +2,7 @@
 import styles from "./taskItem.module.css"
 
 
- const TaskItem = () => {
+const TaskItem = () => {
     return (
         <li className={`${styles.container} ${styles.default}`}>
             <div className={styles.item}>
@@ -13,8 +13,8 @@ import styles from "./taskItem.module.css"
                     titre : finire d'apprendre react
                 </div>
             </div>
-            <button>
-
+            <button className="button-primary">
+                x
             </button>
         </li>
     )
