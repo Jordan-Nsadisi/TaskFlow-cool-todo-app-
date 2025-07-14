@@ -15,8 +15,8 @@
 }
 
 .input {
-    background-color: #171717;
-    border: 1px solid #272727;
+    background-color: #272727;
+    border: 1px solid #373737;
     border-radius: 8px;
     font-size: 16px;
     height: 40px;
@@ -28,5 +28,5 @@
 .input:focus {
     outline: none;
     color: white;
-    border-color: rgba(59, 121, 246, 0.55) ;
+    border-color: rgba(59, 121, 246, 0.55);
 }
