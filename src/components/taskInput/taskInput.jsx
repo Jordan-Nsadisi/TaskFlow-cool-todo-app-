@@ -5,9 +5,10 @@ import styles from "./taskInput.module.css"
 export const TaskInput = () => {
 
     const [taskTitle, setTaskTitle] = useState("") //hook pour la gestion de l'etat du titre du task
+    // console.log(taskTitle);
 
     const handleInputChange = (event) => { //fonctionner qui permet de capturer ce qui est ecrit dans l'input du formulaire, elle prend en paramètre l'èvenement au changement de l'input
-        console.log(event.target.value);
+        // console.log(event.target.value);
         setTaskTitle(event.target.value) //met à jour la valeur du titre du task(tâche)
     }
 
