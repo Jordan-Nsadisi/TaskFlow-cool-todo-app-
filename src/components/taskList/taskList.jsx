@@ -1,4 +1,5 @@
 // le composant taskList est utilisé pour afficher la liste des tâches
+import TaskItem from "../taskItem/taskItem"
 import styles from "./taskList.module.css"
 
 
@@ -9,7 +10,7 @@ export const TaskList = () => {
                 il te reste encore x tâches à accomplir !
             </h2>
             <ul className={styles.container}>
-                composant tasklist
+                <TaskItem />
             </ul>
         </div>
     )
