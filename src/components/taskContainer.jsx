@@ -1,5 +1,6 @@
 //ce composant est utiliser pour afficher l'integralité des taches, géré la logique est partager les responsabilités à chaque composant enfant
 
+import { useState } from "react"
 import { Footer } from "./footer/footer"
 import { Header } from "./header/header"
 import { TaskInput } from "./taskInput/taskInput"
@@ -31,6 +32,40 @@ export const TaskContainer = () => {
 
 
     //** start utils for Component TaskLists */
+    const editTask = (id, isCompletedValue) => { //fonction qui modifie le status de la tâche
+        setTasksList( //bah, bien sûr qu'il dois modifier l'etat du tableau des tâches
+            tasksList.map((task) => //on parcour le tableau des taches, et pour chaque tache...
+                task.id === id ? { // si la valeur de l'id choisie est egal à un id existant
+                    ...task, //spred operator, on recupère les valeurs existant de la tâche
+                    isCompleted: isCompletedValue //et on met à jour la valeur de l'etat de l'enregistrement de la tache
+
+                }
+                    : task //sinon on renvoi juste la tache en question et on ne fais rien
+            )
+        );
+    };
+
+    const deleteTask = (id) => { //fonction qui supprime la tâche
+        setTasksList( //bah, encore une fois on dois modifier l'etat du tableau des tâches
+            tasksList.filter((task) => //pour la suppression, on vas filtré le tableau des taches, et pour chaque tache...
+                task.id !== id // on ne garde que les taches dont l'id est différent de l'id de la tache à supprimer, cela signifie qu'on supprime la tâche
+            ) //la methode filter va renvoyer un nouveau tableau sans la tâche supprimée
+        )
+    }
+
+    const getTaskCounts = () => { //fonction qui renvois le nombre des taches restants à completer
+        const completedTasks = tasksList.filter((task) => task.isCompleted === true).length //on filtre les tâches pour ressortir un tablau des tâches dont l'etat isCompleted est true(donc les tasks complètes), et avec la methode lenght, on transforme le tableau en nombre pour mieux géré les taches completent et incompletent
+        const incompletedTasks = tasksList.length - completedTasks // on soustrait au nombre du tableau des tâches, le nombre des taches complétés pour recupéré les tâches incomplètes
+
+        return { //et me retourne les deux éléments
+            completedTasks,
+            incompletedTasks
+        }
+    }
+
+    const { completedTasks, incompletedTasks } = getTaskCounts(); //destructuring pour recupéré individuelement les outils provenant de la fonction 'getTaskCounts'
+    console.log("complété :", completedTasks, "non-complété :", incompletedTasks);
+    //** end utils for Component TaskLists */
 
 
 
