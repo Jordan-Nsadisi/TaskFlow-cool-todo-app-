@@ -10,18 +10,9 @@ export const TaskContainer = () => {
 
     // etat générale de l'application
     const [tasksList, setTasksList] = useState([
-        {
-            id: 1,
-            title: "voir la lune",
-            isCompleted: false
-        },
-        {
-            id: 2,
-            title: "voir le solei",
-            isCompleted: false
-        }
+        //...les tâches seront ajoutées ici pendant la soumission, on initialise l'état avec un tableau vide. { id: 1, title: "Tâche 1", isCompleted: false },
     ]) //l'etat qui vas contenire les taches, il va recupéré les taches despuis le composant enfant de creation des tâches, et les envoyer au composants enfant qui vas les affichés
-    console.log(tasksList);
+    console.log("Liste des tâches:", tasksList);
 
     const addTask = (title) => { //fonction pour ajouter les taches, elle prend en parametre les titres recupéré depuis la fonction de soumission de tâches du composant enfant ayant cette responsabilité
 
