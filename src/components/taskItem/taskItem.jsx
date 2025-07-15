@@ -2,7 +2,7 @@
 import styles from "./taskItem.module.css"
 
 
-const TaskItem = () => {
+const TaskItem = ({ task, editTask, deleteTask }) => { //props drilling depuis le parent le plus haut 'TaskContainer'
     return (
         <li className={`${styles.container} ${styles.default}`}>
             <div className={styles.item}>
