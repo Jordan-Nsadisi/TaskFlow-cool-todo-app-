@@ -21,7 +21,7 @@ export const TaskLists = (
                 il te reste encore {incompletedTasks} tâches à accomplir !
             </h2>
 
-            {tasksList && tasksList.lenght > 0 && ( // si le tableau des tâches existe et le nombre des tâches est superieur à 0, ...
+            {tasksList && tasksList.length > 0 && ( // si le tableau des tâches existe et le nombre des tâches est superieur à 0, ...
                 <ul className={styles.container}>
                     {taskLists} {/* on affiche dans une liste, le tableau mapper dans un composant TaskItem */}
                 </ul>
