@@ -7,7 +7,7 @@ export const TaskInput = (
         addTask //fonction pour ajouter les tâches, elle est passée en prop depuis le composant parent TaskContainer
     }
 ) => {
-// console.log(addTask);
+    // console.log(addTask);
 
     const [taskTitle, setTaskTitle] = useState("") //hook pour la gestion de l'etat du titre du task
     // console.log(taskTitle);
@@ -17,10 +17,18 @@ export const TaskInput = (
         setTaskTitle(event.target.value) //met à jour la valeur du titre du task(tâche)
     }
 
+    const handleAddTask = (event) => { //focntion qui soummet le formulaire, elle prend en paramètre l'èvenement de soumission du formulaire
+        event.preventDefault(); //empêche le comportement par défaut du formulaire qui consiste à recharger la page
+
+        addTask(taskTitle) // on a deja la fonction d'ajout de tâches récupéré en props depuis le parent, donc on la joue et on lui passe le titre(ce qui corespond à la valeur de l'input au moment de la soumission, le titre qui est mis à jour par la fonction 'handleInputChange' qui ecoute les évenement de l'input)
+        setTaskTitle("") //et on reset la valeur de l'input
+        // console.log("Task added:", taskTitle); //affiche dans la console le titre de la tâche ajoutée
+    }
+
     return (
         <div className={`box ${styles.element}`}>
             <h2 className={styles.title}>🎯 Ajoute ta prochaine tâche</h2>
-            <form className={styles.container} action="">
+            <form className={styles.container} onSubmit={handleAddTask}>
                 <input
                     type="text"
                     className={styles.input}
@@ -29,7 +37,7 @@ export const TaskInput = (
                     value={taskTitle} //liaison de l'état du titre de la tâche avec la valeur de l'input, c'est-à-dire que l'input affichera toujours la valeur actuelle de taskTitle, c'est-à-dire que si taskTitle change, l'input se mettra à jour automatiquement, c'est ce qu'on appelle le "controlled component", c'est-à-dire que la valeur de l'input est contrôlée par l'état React, c'est une bonne pratique pour gérer les formulaires dans React
                 />
                 <button
-                type="submit"
+                    type="submit"
                     className={taskTitle.length === 0 ? "button-primary-disabled" : "button-primary"}
                     disabled={!taskTitle} //le bouton est désactivé si taskTitle est vide, c'est-à-dire que l'utilisateur n'a pas encore saisi de titre
                 >
