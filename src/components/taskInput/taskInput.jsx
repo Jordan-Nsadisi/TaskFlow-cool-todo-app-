@@ -20,9 +20,15 @@ export const TaskInput = (
     const handleAddTask = (event) => { //focntion qui soummet le formulaire, elle prend en paramètre l'èvenement de soumission du formulaire
         event.preventDefault(); //empêche le comportement par défaut du formulaire qui consiste à recharger la page
 
-        addTask(taskTitle) // on a deja la fonction d'ajout de tâches récupéré en props depuis le parent, donc on la joue et on lui passe le titre(ce qui corespond à la valeur de l'input au moment de la soumission, le titre qui est mis à jour par la fonction 'handleInputChange' qui ecoute les évenement de l'input)
-        setTaskTitle("") //et on reset la valeur de l'input
-        // console.log("Task added:", taskTitle); //affiche dans la console le titre de la tâche ajoutée
+        if (taskTitle.trim()) { // on ajoute la tâche et reset la valeur de l'input si taskTitle existe sans espace
+            addTask(taskTitle) // on a deja la fonction d'ajout de tâches récupéré en props depuis le parent, donc on la joue et on lui passe le titre(ce qui corespond à la valeur de l'input au moment de la soumission, le titre qui est mis à jour par la fonction 'handleInputChange' qui ecoute les évenement de l'input) 
+            setTaskTitle("") //et on reset la valeur de l'input
+            // console.log("Task added:", taskTitle); //affiche dans la console le titre de la tâche ajoutée
+        } else {
+            // TODO: mieux géré les messages d'erreurs
+            console.log("le titre est vide");
+
+        }
     }
 
     return (
