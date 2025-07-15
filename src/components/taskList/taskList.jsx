@@ -8,7 +8,11 @@ export const TaskLists = (
 ) => {
 
     const taskLists = tasksList.map((task) => ( //externalisation du pacours du tableau de taches pour les afficher à chaque tour dans un composant taskItem
-        <TaskItem key={task.id} />
+        <TaskItem key={task.id}
+            task={task} // il reçoit en props chaque tâche bouclé et ces informations
+            editTask={editTask} // et l'outil d'edition des tâches
+            deleteTask={deleteTask} // et l'outil de suppression des tâches
+        />
     ))
 
     return (
