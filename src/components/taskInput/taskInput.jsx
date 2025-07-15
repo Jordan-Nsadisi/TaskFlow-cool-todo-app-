@@ -44,7 +44,11 @@ export const TaskInput = (
                 />
                 <button
                     type="submit"
-                    className={taskTitle.length === 0 ? "button-primary-disabled" : "button-primary"}
+                    className={
+                        taskTitle.length === 0 // si la valeur du titre est de 0
+                        || !taskTitle.trim() // ou la valeur n'est pas un caractère mais un espace
+                        ? "button-primary-disabled" : "button-primary"
+                    }
                     disabled={!taskTitle} //le bouton est désactivé si taskTitle est vide, c'est-à-dire que l'utilisateur n'a pas encore saisi de titre
                 >
                     Ajouter
