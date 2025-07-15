@@ -4,13 +4,13 @@ import styles from "./taskList.module.css"
 
 
 export const TaskLists = (
-    { tasksList, editTask, deleteTask, incompletedTasks } //recupère en props les outils crée et transmis depuis le composant parent
+    { tasksList, incompletedTasks, editTask, deleteTask } //recupère en props les outils crée et transmis depuis le composant parent.
 ) => {
 
     return (
         <div className='box'>
             <h2 className={StyleSheet.title}>
-                il te reste encore x tâches à accomplir !
+                il te reste encore {incompletedTasks} tâches à accomplir !
             </h2>
             <ul className={styles.container}>
                 <TaskItem />
