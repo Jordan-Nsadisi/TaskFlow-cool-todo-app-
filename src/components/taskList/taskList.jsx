@@ -15,18 +15,31 @@ export const TaskLists = (
         />
     ))
 
-    return (
+
+
+    if (taskLists && tasksList.length > 0) { //si la liste existe et que ça valeur est supperieur à 0
+        return (
+            <div className='box'>
+                <h2 className={StyleSheet.title}>
+                    il te reste encore {incompletedTasks} tâches à accomplir !
+                </h2>
+
+                {tasksList && tasksList.length > 0 && ( // si le tableau des tâches existe et le nombre des tâches est superieur à 0, ...
+                    <ul className={styles.container}>
+                        {taskLists} {/* on affiche dans une liste, le tableau mapper dans un composant TaskItem */}
+                    </ul>
+                )}
+
+            </div>
+        )
+    }
+
+    return ( //sinon affiche ceci
         <div className='box'>
-            <h2 className={StyleSheet.title}>
-                il te reste encore {incompletedTasks} tâches à accomplir !
+            <h2 className={StyleSheet.emptyState}>
+                👋 Salut, tu n'as rien à faire ! Profite de ton temps libre !
             </h2>
-
-            {tasksList && tasksList.length > 0 && ( // si le tableau des tâches existe et le nombre des tâches est superieur à 0, ...
-                <ul className={styles.container}>
-                    {taskLists} {/* on affiche dans une liste, le tableau mapper dans un composant TaskItem */}
-                </ul>
-            )}
-
         </div>
     )
+
 }
