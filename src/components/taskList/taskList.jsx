@@ -20,8 +20,14 @@ export const TaskLists = (
     if (taskLists && tasksList.length > 0) { //si la liste existe et que ça valeur est supperieur à 0
         return (
             <div className='box'>
-                <h2 className={StyleSheet.title}>
-                    il te reste encore {incompletedTasks} tâches à accomplir !
+                <h2 className={styles.title}>
+
+                    {incompletedTasks > 0 ? ( // si les taches non accomplétés sont superieur
+                        <> 📝 il te reste encore <span className="important">{incompletedTasks}</span>  tâches à accomplir !</>
+                    ) : (
+                        <> 🤝 Génial, tu as accompli toutes tes tâches !</>
+                    ) //sinon
+                    }
                 </h2>
 
                 {tasksList && tasksList.length > 0 && ( // si le tableau des tâches existe et le nombre des tâches est superieur à 0, ...
