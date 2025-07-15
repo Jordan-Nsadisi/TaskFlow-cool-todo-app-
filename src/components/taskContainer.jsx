@@ -39,7 +39,7 @@ export const TaskContainer = () => {
     return (
         <main>
             <Header />
-            <TaskInput />
+            <TaskInput addTask={addTask} /> {/* on passe la fonction addTask en prop au composant enfant TaskInput pour pouvoir ajouter des tâches depuis ce composant */}
             <TaskList />
             <Footer />
         </main>

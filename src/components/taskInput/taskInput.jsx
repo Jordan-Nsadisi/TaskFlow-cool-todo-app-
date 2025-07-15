@@ -2,7 +2,12 @@
 import { useState } from "react";
 import styles from "./taskInput.module.css"
 
-export const TaskInput = () => {
+export const TaskInput = (
+    {
+        addTask //fonction pour ajouter les tâches, elle est passée en prop depuis le composant parent TaskContainer
+    }
+) => {
+// console.log(addTask);
 
     const [taskTitle, setTaskTitle] = useState("") //hook pour la gestion de l'etat du titre du task
     // console.log(taskTitle);
@@ -24,7 +29,7 @@ export const TaskInput = () => {
                     value={taskTitle} //liaison de l'état du titre de la tâche avec la valeur de l'input, c'est-à-dire que l'input affichera toujours la valeur actuelle de taskTitle, c'est-à-dire que si taskTitle change, l'input se mettra à jour automatiquement, c'est ce qu'on appelle le "controlled component", c'est-à-dire que la valeur de l'input est contrôlée par l'état React, c'est une bonne pratique pour gérer les formulaires dans React
                 />
                 <button
-                    className={ taskTitle.length === 0 ? "button-primary-disabled" : "button-primary"}
+                    className={taskTitle.length === 0 ? "button-primary-disabled" : "button-primary"}
                     disabled={!taskTitle} //le bouton est désactivé si taskTitle est vide, c'est-à-dire que l'utilisateur n'a pas encore saisi de titre
                 >
                     Ajouter
