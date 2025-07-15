@@ -121,6 +121,12 @@ a:focus-visible {
   border-color: rgba(59, 121, 241, 0.35);
 }
 
+.button-primary-disabled {
+  background-color: rgba(59, 121, 241, 0.05);
+  color: rgba(59, 121, 241, 0.5);
+  cursor: not-allowed;
+}
+
 
 
 @media (prefers-color-scheme: light) {
