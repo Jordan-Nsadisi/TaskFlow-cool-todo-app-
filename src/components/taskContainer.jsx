@@ -22,7 +22,7 @@ export const TaskContainer = () => {
             isCompleted: false
         }
 
-        setTasksList(...tasksList, newTask) //"spred operator", on ajoute dans la liste du tableau 'tasksList', les nouveaux élément de recupéré de l'input avec l'objet 'newTask' de cette fonction, sans modifier le tableau deja existant
+        setTasksList([...tasksList, newTask]) //"spred operator", on ajoute dans la liste du tableau 'tasksList', les nouveaux élément de recupéré de l'input avec l'objet 'newTask' de cette fonction, sans modifier le tableau deja existant
     }
 
 
