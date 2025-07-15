@@ -3,7 +3,10 @@ import TaskItem from "../taskItem/taskItem"
 import styles from "./taskList.module.css"
 
 
-export const TaskLists = () => {
+export const TaskLists = (
+    { tasksList, editTask, deleteTask, incompletedTasks } //recupère en props les outils crée et transmis depuis le composant parent
+) => {
+
     return (
         <div className='box'>
             <h2 className={StyleSheet.title}>
