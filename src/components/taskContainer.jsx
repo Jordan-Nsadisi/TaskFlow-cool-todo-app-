@@ -64,7 +64,7 @@ export const TaskContainer = () => {
     }
 
     const { completedTasks, incompletedTasks } = getTaskCounts(); //destructuring pour recupéré individuelement les outils provenant de la fonction 'getTaskCounts'
-    console.log("complété :", completedTasks, "non-complété :", incompletedTasks);
+    // console.log("complété :", completedTasks, "non-complété :", incompletedTasks);
     //** end utils for Component TaskLists */
 
 
@@ -75,7 +75,8 @@ export const TaskContainer = () => {
         <main>
             <Header />
             <TaskInput addTask={addTask} /> {/* on passe la fonction addTask en prop au composant enfant TaskInput pour pouvoir ajouter des tâches depuis ce composant */}
-            <TaskLists />
+            <TaskLists tasksList={tasksList} editTask={editTask}
+                deleteTask={deleteTask} incompletedTasks={incompletedTasks} /> {/*on passe en props le tableau des taches, et les outils dont il a besoin */}
             <Footer />
         </main>
     )
