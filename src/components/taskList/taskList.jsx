@@ -3,7 +3,7 @@ import TaskItem from "../taskItem/taskItem"
 import styles from "./taskList.module.css"
 
 
-export const TaskList = () => {
+export const TaskLists = () => {
     return (
         <div className='box'>
             <h2 className={StyleSheet.title}>

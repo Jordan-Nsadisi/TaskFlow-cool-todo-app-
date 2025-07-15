@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Footer } from "./footer/footer"
 import { Header } from "./header/header"
 import { TaskInput } from "./taskInput/taskInput"
-import { TaskList } from "./taskList/taskList"
+import { TaskLists } from "./taskList/taskList"
 
 export const TaskContainer = () => {
 
@@ -31,7 +31,7 @@ export const TaskContainer = () => {
         <main>
             <Header />
             <TaskInput addTask={addTask} /> {/* on passe la fonction addTask en prop au composant enfant TaskInput pour pouvoir ajouter des tâches depuis ce composant */}
-            <TaskList />
+            <TaskLists />
             <Footer />
         </main>
     )
