@@ -1,6 +1,5 @@
-//ce composant est utiliser pour afficher l'integralité des taches
+//ce composant est utiliser pour afficher l'integralité des taches, géré la logique est partager les responsabilités à chaque composant enfant
 
-import { useState } from "react"
 import { Footer } from "./footer/footer"
 import { Header } from "./header/header"
 import { TaskInput } from "./taskInput/taskInput"
@@ -14,6 +13,7 @@ export const TaskContainer = () => {
     ]) //l'etat qui vas contenire les taches, il va recupéré les taches despuis le composant enfant de creation des tâches, et les envoyer au composants enfant qui vas les affichés
     console.log("Liste des tâches:", tasksList);
 
+    //** start utils for Component TaskInput */
     const addTask = (title) => { //fonction pour ajouter les taches, elle prend en parametre les titres recupéré depuis la fonction de soumission de tâches du composant enfant ayant cette responsabilité
 
         const newTask = { //creation de nouvelle taches
@@ -24,6 +24,15 @@ export const TaskContainer = () => {
 
         setTasksList([...tasksList, newTask]) //"spred operator", on ajoute dans la liste du tableau 'tasksList', les nouveaux élément de recupéré de l'input avec l'objet 'newTask' de cette fonction, sans modifier le tableau deja existant
     }
+    //** end utils for Component TaskInput */
+
+
+
+
+    
+    //** start utils for Component TaskLists */
+
+
 
 
 
