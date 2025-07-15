@@ -13,6 +13,8 @@ export const TaskContainer = () => {
     ]) //l'etat qui vas contenire les taches, il va recupéré les taches despuis le composant enfant de creation des tâches, et les envoyer au composants enfant qui vas les affichés
     console.log("Liste des tâches:", tasksList);
 
+
+
     //** start utils for Component TaskInput */
     const addTask = (title) => { //fonction pour ajouter les taches, elle prend en parametre les titres recupéré depuis la fonction de soumission de tâches du composant enfant ayant cette responsabilité
 
@@ -28,8 +30,6 @@ export const TaskContainer = () => {
 
 
 
-
-    
     //** start utils for Component TaskLists */
 
 
