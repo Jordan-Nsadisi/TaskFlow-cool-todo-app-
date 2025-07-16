@@ -20,7 +20,9 @@ export const TaskContainer = () => {
     const addTask = (title) => { //fonction pour ajouter les taches, elle prend en parametre les titres recupéré depuis la fonction de soumission de tâches du composant enfant ayant cette responsabilité
 
         const newTask = { //creation de nouvelle taches
-            id: tasksList.length + 1, // l'ide sera le nombre d'element du tableau + 1
+            id: tasksList.length ? // si le tableau des taches n'est pas vide
+                tasksList[tasksList.length - 1].id + 1 // on recupère l'id de la dernière tache et on lui ajoute 1 pour avoir un id unique, en d'autres termes, on verifie si le tableau des taches n'est pas vide, et on recupère l'id de la dernière tache et on lui ajoute 1 pour avoir un id unique
+                : 1, // sinon on initialise l'id à 1, pour la premiere tache
             title: title,
             isCompleted: false
         }
