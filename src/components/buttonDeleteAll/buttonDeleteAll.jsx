@@ -2,6 +2,8 @@
 
 export const ButtonDeleteAll = () => {
     return (
-        <button>tous supprimer</button>
+        <button
+        className="button-delete-all"
+        >tous supprimer</button>
     )
 }

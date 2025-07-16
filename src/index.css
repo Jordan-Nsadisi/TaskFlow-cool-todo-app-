@@ -130,6 +130,8 @@ a:focus-visible {
 .button-delete-all {
   background-color: rgba(241, 59, 59, 0.15);
   color: #ff2828;
+  float: right;
+  margin-top: 10px;
 }
 
 .button-delete-all:hover {
