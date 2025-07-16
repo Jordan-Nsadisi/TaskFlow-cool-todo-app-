@@ -42,7 +42,10 @@ export const TaskContainer = () => {
             isCompleted: false
         }
 
-        setTasksList([...tasksList, newTask]) //"spred operator", on ajoute dans la liste du tableau 'tasksList', les nouveaux élément de recupéré de l'input avec l'objet 'newTask' de cette fonction, sans modifier le tableau deja existant
+        setTasksList([...tasksList, newTask]) //"spred operator", on ajoute dans la liste du tableau 'tasksList', les nouveaux élément de recupéré de l'input avec l'objet 'newTask' de cette fonction, sans modifier le tableau deja existant, dans l'etat local(useState)
+
+        const updatedTask = [...tasksList, newTask] //on capture dans une variable tableau des tasks contenant les anciens et nouveaux tasks ajouté
+        saveTaskToLocalStorage(updatedTask) //et avec la methode 'saveTaskToLocalStorage' on enregistre dans le localstorage, le tableau des tasks capturer
     }
     //** end utils for Component TaskInput */
 
