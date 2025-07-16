@@ -5,6 +5,7 @@ import { Footer } from "./footer/footer"
 import { Header } from "./header/header"
 import { TaskInput } from "./taskInput/taskInput"
 import { TaskLists } from "./taskList/taskList"
+import { ButtonDeleteAll } from "./buttonDeleteAll/buttonDeleteAll"
 
 export const TaskContainer = () => {
 
@@ -109,6 +110,7 @@ export const TaskContainer = () => {
             <TaskInput addTask={addTask} /> {/* on passe la fonction addTask en prop au composant enfant TaskInput pour pouvoir ajouter des tâches depuis ce composant */}
             <TaskLists tasksList={tasksList} editTask={editTask}
                 deleteTask={deleteTask} incompletedTasks={incompletedTasks} /> {/*on passe en props le tableau des taches, et les outils dont il a besoin */}
+            <ButtonDeleteAll />
             <Footer completedTasks={completedTasks} /> {/*on passe en props le nombre des tâches complété pour géré leur affichages dans le composant enfant */}
         </main>
     )
