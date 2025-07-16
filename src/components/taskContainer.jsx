@@ -14,10 +14,22 @@ export const TaskContainer = () => {
     ]) //l'etat qui vas contenire les taches, il va recupéré les taches despuis le composant enfant de creation des tâches, et les envoyer au composants enfant qui vas les affichés
     console.log("Liste des tâches:", tasksList);
 
-    useEffect(() => {
-        // localStorage.setItem("pays", "congo")
-        localStorage.clear()
+
+    /*LocalStorage logique start */
+    useEffect(() => { //gestion du localStorage, methodes permettant de régénéré le localStorage. mis dans un useEffect pour qu'il s'execute une seule fois au chargement du composant
+        const storedTasks = localStorage.getItem("tasksList") // recupère la clé depuis le localStorage (la clé contenant le tableau des tâches)
+        // console.log("LS-storedTasks : ", storedTasks);
+
+        if (storedTasks) { //si la clée récupéré depusi le localstorage existe
+            setTasksList(JSON.parse(storedTasks)) // on met à jour le tableau des tâches avec les données récupéré depuis le localstorage. Avec la methode JSOn.parse on convertis la chaine de caractère en un objet
+        }
     }, [])
+
+    const saveTaskToLocalStorage = (task) => { //fonction pour sauvegarder les tâches dans le local storage, elle prend en params la tâches
+        localStorage.setItem("tasksList", JSON.stringify(task)) //ajout dans le localstorage, à la clé 'tasksList', l'objet de la tâche transformer en châine de caractère
+    }
+    /*LocalStorage logique end */
+
 
     //** start utils for Component TaskInput */
     const addTask = (title) => { //fonction pour ajouter les taches, elle prend en parametre les titres recupéré depuis la fonction de soumission de tâches du composant enfant ayant cette responsabilité
@@ -80,7 +92,6 @@ export const TaskContainer = () => {
         <main>
             <Header />
             <TaskInput addTask={addTask} /> {/* on passe la fonction addTask en prop au composant enfant TaskInput pour pouvoir ajouter des tâches depuis ce composant */}
-            <h1>{localStorage.getItem("username")} </h1>
             <TaskLists tasksList={tasksList} editTask={editTask}
                 deleteTask={deleteTask} incompletedTasks={incompletedTasks} /> {/*on passe en props le tableau des taches, et les outils dont il a besoin */}
             <Footer completedTasks={completedTasks} /> {/*on passe en props le nombre des tâches complété pour géré leur affichages dans le composant enfant */}
