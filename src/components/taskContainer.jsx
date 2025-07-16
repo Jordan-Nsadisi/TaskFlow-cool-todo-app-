@@ -86,6 +86,11 @@ export const TaskContainer = () => {
         saveTaskToLocalStorage(updatedTask) //et avec la methode 'saveTaskToLocalStorage' on enregistre dans le localstorage, les suppression des éléments du tableau des tasks filtré, capturer dans la variable 'updatedTask'
     }
 
+    const deleteAllTask = () => { //fonction qui supprime toutes les tâches, dans l'etat, on vide le tableau des tâches, et dans le localStorage, on vide aussi la clé 'tasksList'
+        setTasksList([])  // Vide la liste des tâches
+        saveTaskToLocalStorage([]); // Vide aussi le localStorage
+    }
+
     const getTaskCounts = () => { //fonction qui renvois le nombre des taches restants à completer
         const completedTasks = tasksList.filter((task) => task.isCompleted === true).length //on filtre les tâches pour ressortir un tablau des tâches dont l'etat isCompleted est true(donc les tasks complètes), et avec la methode lenght, on transforme le tableau en nombre pour mieux géré les taches completent et incompletent
         const incompletedTasks = tasksList.length - completedTasks // on soustrait au nombre du tableau des tâches, le nombre des taches complétés pour recupéré les tâches incomplètes
@@ -110,7 +115,7 @@ export const TaskContainer = () => {
             <TaskInput addTask={addTask} /> {/* on passe la fonction addTask en prop au composant enfant TaskInput pour pouvoir ajouter des tâches depuis ce composant */}
             <TaskLists tasksList={tasksList} editTask={editTask}
                 deleteTask={deleteTask} incompletedTasks={incompletedTasks} /> {/*on passe en props le tableau des taches, et les outils dont il a besoin */}
-            <ButtonDeleteAll />
+            <ButtonDeleteAll deleteAllTask={deleteAllTask} />
             <Footer completedTasks={completedTasks} /> {/*on passe en props le nombre des tâches complété pour géré leur affichages dans le composant enfant */}
         </main>
     )
