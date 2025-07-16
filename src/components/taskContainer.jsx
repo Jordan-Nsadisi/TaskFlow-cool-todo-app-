@@ -72,11 +72,17 @@ export const TaskContainer = () => {
     };
 
     const deleteTask = (id) => { //fonction qui supprime la tâche
+
+        //même logique ici que la decomposition pour editer la tâches
+        const updatedTask = tasksList.filter((task) => //pour la suppression, on vas filtré le tableau des taches, et pour chaque tache...
+            task.id !== id // on ne garde que les taches dont l'id est différent de l'id de la tache à supprimer, cela signifie qu'on supprime la tâche
+        ) //la methode filter va renvoyer un nouveau tableau sans la tâche supprimée
+
         setTasksList( //bah, encore une fois on dois modifier l'etat du tableau des tâches
-            tasksList.filter((task) => //pour la suppression, on vas filtré le tableau des taches, et pour chaque tache...
-                task.id !== id // on ne garde que les taches dont l'id est différent de l'id de la tache à supprimer, cela signifie qu'on supprime la tâche
-            ) //la methode filter va renvoyer un nouveau tableau sans la tâche supprimée
+            updatedTask
         )
+
+        saveTaskToLocalStorage(updatedTask) //et avec la methode 'saveTaskToLocalStorage' on enregistre dans le localstorage, les suppression des éléments du tableau des tasks filtré, capturer dans la variable 'updatedTask'
     }
 
     const getTaskCounts = () => { //fonction qui renvois le nombre des taches restants à completer
