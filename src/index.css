@@ -127,6 +127,16 @@ a:focus-visible {
   cursor: not-allowed;
 }
 
+.button-delete {
+  background-color: rgba(241, 59, 59, 0.15);
+  color: #ff2828;
+}
+
+.button-delete:hover {
+  background-color: rgba(241, 59, 59, 0.25);
+  border-color: rgba(241, 59, 59, 0.35);
+}
+
 
 
 @media (prefers-color-scheme: light) {
