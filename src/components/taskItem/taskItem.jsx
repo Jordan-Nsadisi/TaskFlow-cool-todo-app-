@@ -2,8 +2,23 @@
 import styles from "./taskItem.module.css"
 import { Player } from '@lordicon/react' //importation de la librairie pour les animations des icones
 import deleteIcon from '../../assets/deleteIcon.json' //importation de l'icone de suppression
+import { useRef } from 'react' // Import du hook useRef pour contrôler l’animation
 
 const TaskItem = ({ task, editTask, deleteTask }) => { //props drilling depuis le parent le plus haut 'TaskContainer', sauf 'task' qui est l'objet contenant les infos de chaque tâche, mappé deouis le composant TaskList
+
+
+    const playerRef = useRef(null); // création d'une référence pour contrôler l'animation Lordicon, definie par defaut à null pour éviter les erreurs de rendu avant que le composant soit monté
+
+
+    const handlePlay = () => { // fonction pour jouer l’animation au survol
+        playerRef.current?.playFromBeginning(); // Utilisation de l’opérateur de chaînage optionnel pour éviter les erreurs si playerRef.current est null
+    };
+
+
+    const handleStop = () => { // fonction pour arrêter l’animation quand la souris quitte
+        playerRef.current?.stop();
+    };
+
     return (
         <li
             className={`${styles.container} ${task?.isCompleted ? styles.success : styles.default}`}
@@ -17,24 +32,18 @@ const TaskItem = ({ task, editTask, deleteTask }) => { //props drilling depuis l
                     {task.title}
                 </div>
             </div>
-            <button className="button-primary">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    style={{ width: "20px", height: "20px" }}>
-                    <path fillRule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 0 1 3.878.512.75.75 0 1 1-.256 1.478l-.209-.035-1.005 13.07a3 3 0 0 1-2.991 2.77H8.084a3 3 0 0 1-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 0 1-.256-1.478A48.567 48.567 0 0 1 7.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 0 1 3.369 0c1.603.051 2.815 1.387 2.815 2.951Zm-6.136-1.452a51.196 51.196 0 0 1 3.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 0 0-6 0v-.113c0-.794.609-1.428 1.364-1.452Zm-.355 5.945a.75.75 0 1 0-1.5.058l.347 9a.75.75 0 1 0 1.499-.058l-.346-9Zm5.48.058a.75.75 0 1 0-1.498-.058l-.347 9a.75.75 0 0 0 1.5.058l.345-9Z" clipRule="evenodd" />
-                </svg>
-            </button>
 
-            <button className="button-primary">
+            <button
+                className="button-primary"
+                onMouseEnter={handlePlay} //on joue l'animation au survol de la souris
+                onMouseLeave={handleStop}
+            >
                 <Player
                     icon={deleteIcon}
-                    size={20}
+                    size={21}
                     colorize="#2870ff"
-                    autoplay
-                    loop={false}
-                // style={{ width: "20px", height: "20px" }}
+                    loop={false} //ne boucle pas l’animation
+                    ref={playerRef} //on passe la référence pour contrôler l'animation
                 />
             </button>
         </li>
