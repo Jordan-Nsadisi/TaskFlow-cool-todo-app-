@@ -115,7 +115,7 @@ export const TaskContainer = () => {
             <TaskInput addTask={addTask} /> {/* on passe la fonction addTask en prop au composant enfant TaskInput pour pouvoir ajouter des tâches depuis ce composant */}
             <TaskLists tasksList={tasksList} editTask={editTask}
                 deleteTask={deleteTask} incompletedTasks={incompletedTasks} /> {/*on passe en props le tableau des taches, et les outils dont il a besoin */}
-            <ButtonDeleteAll deleteAllTask={deleteAllTask} />
+            <ButtonDeleteAll deleteAllTask={deleteAllTask} tasksList={tasksList}/>
             <Footer completedTasks={completedTasks} /> {/*on passe en props le nombre des tâches complété pour géré leur affichages dans le composant enfant */}
         </main>
     )
