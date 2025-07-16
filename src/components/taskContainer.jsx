@@ -67,6 +67,9 @@ export const TaskContainer = () => {
         setTasksList( //bah, bien sûr qu'il dois modifier l'etat du tableau des tâches
             updatedTask //on joue la variable contenent le tableau parouru
         );
+
+        saveTaskToLocalStorage(updatedTask) //et avec la methode 'saveTaskToLocalStorage' on enregistre dans le localstorage, les modifications du tableau des tasks mapé, capturer dans la variable 'updatedTask'
+
     };
 
     const deleteTask = (id) => { //fonction qui supprime la tâche
