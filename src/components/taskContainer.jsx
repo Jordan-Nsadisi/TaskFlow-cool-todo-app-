@@ -54,7 +54,7 @@ export const TaskContainer = () => {
     //** start utils for Component TaskLists */
     const editTask = (id, isCompletedValue) => { //fonction qui modifie le status de la tâche
 
-        //decomposition du parcours du tableau, inséré dans une variable
+        //decomposition du parcours du tableau parcouru, inséré dans une variable
         const updatedTask = tasksList.map((task) => //on parcour le tableau des taches, et pour chaque tache...
             task.id === id ? { // si la valeur de l'id choisie est egal à un id existant
                 ...task, //spred operator, on recupère les valeurs existant de la tâche
