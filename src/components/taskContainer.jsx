@@ -53,15 +53,19 @@ export const TaskContainer = () => {
 
     //** start utils for Component TaskLists */
     const editTask = (id, isCompletedValue) => { //fonction qui modifie le status de la tâche
-        setTasksList( //bah, bien sûr qu'il dois modifier l'etat du tableau des tâches
-            tasksList.map((task) => //on parcour le tableau des taches, et pour chaque tache...
-                task.id === id ? { // si la valeur de l'id choisie est egal à un id existant
-                    ...task, //spred operator, on recupère les valeurs existant de la tâche
-                    isCompleted: isCompletedValue //et on met à jour la valeur de l'etat de l'enregistrement de la tache
 
-                }
-                    : task //sinon on renvoi juste la tache en question et on ne fais rien
-            )
+        //decomposition du parcours du tableau, inséré dans une variable
+        const updatedTask = tasksList.map((task) => //on parcour le tableau des taches, et pour chaque tache...
+            task.id === id ? { // si la valeur de l'id choisie est egal à un id existant
+                ...task, //spred operator, on recupère les valeurs existant de la tâche
+                isCompleted: isCompletedValue //et on met à jour la valeur de l'etat de l'enregistrement de la tache
+
+            }
+                : task //sinon on renvoi juste la tache en question et on ne fais rien
+        )
+
+        setTasksList( //bah, bien sûr qu'il dois modifier l'etat du tableau des tâches
+            updatedTask //on joue la variable contenent le tableau parouru
         );
     };
 
