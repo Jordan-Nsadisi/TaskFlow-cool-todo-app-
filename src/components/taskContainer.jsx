@@ -1,6 +1,6 @@
 //ce composant est utiliser pour afficher l'integralité des taches, géré la logique est partager les responsabilités à chaque composant enfant
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Footer } from "./footer/footer"
 import { Header } from "./header/header"
 import { TaskInput } from "./taskInput/taskInput"
@@ -14,7 +14,10 @@ export const TaskContainer = () => {
     ]) //l'etat qui vas contenire les taches, il va recupéré les taches despuis le composant enfant de creation des tâches, et les envoyer au composants enfant qui vas les affichés
     console.log("Liste des tâches:", tasksList);
 
-
+    useEffect(() => {
+        // localStorage.setItem("pays", "congo")
+        localStorage.clear()
+    }, [])
 
     //** start utils for Component TaskInput */
     const addTask = (title) => { //fonction pour ajouter les taches, elle prend en parametre les titres recupéré depuis la fonction de soumission de tâches du composant enfant ayant cette responsabilité
@@ -77,6 +80,7 @@ export const TaskContainer = () => {
         <main>
             <Header />
             <TaskInput addTask={addTask} /> {/* on passe la fonction addTask en prop au composant enfant TaskInput pour pouvoir ajouter des tâches depuis ce composant */}
+            <h1>{localStorage.getItem("username")} </h1>
             <TaskLists tasksList={tasksList} editTask={editTask}
                 deleteTask={deleteTask} incompletedTasks={incompletedTasks} /> {/*on passe en props le tableau des taches, et les outils dont il a besoin */}
             <Footer completedTasks={completedTasks} /> {/*on passe en props le nombre des tâches complété pour géré leur affichages dans le composant enfant */}
