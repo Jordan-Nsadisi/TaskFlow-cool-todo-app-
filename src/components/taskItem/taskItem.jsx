@@ -35,7 +35,10 @@ const TaskItem = ({ task, editTask, deleteTask }) => { //props drilling depuis l
 
             <button
                 className="button-primary"
-                onClick={() => deleteTask(task.id)} //au clique du bouton on joue la fonction de suppression et on lui passe l'id de la tache concerner
+                onClick={(event) => { //au clique du bouton...
+                    event.stopPropagation() // on stop la propagation de l'evenement plus haut
+                    deleteTask(task.id) //on joue la fonction de suppression et on lui passe l'id de la tache concerner
+                }}
                 onMouseEnter={handlePlay} //on joue l'animation au survol de la souris
                 onMouseLeave={handleStop}
             >
