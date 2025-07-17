@@ -1,4 +1,9 @@
 //ce composant  est le bouton suprimant toutes les tâches
+import { Player } from '@lordicon/react' //importation de la librairie pour les animations des icones
+import deleteAllicon from '../../assets/deleteAllicon.json' //importation de l'icone de suppression
+import { useRef } from 'react' // Import du hook useRef pour contrôler l’animation
+
+
 
 export const ButtonDeleteAll = ({ deleteAllTask, tasksList }) => {
 
@@ -13,7 +18,13 @@ export const ButtonDeleteAll = ({ deleteAllTask, tasksList }) => {
                 className="button-delete-all"
                 onClick={handleDeleteAllTask}
             >
-                tous supprimer
+                <Player
+                    icon={deleteAllicon}
+                    size={21}
+                    colorize="#2870ff"
+                    loop={false} //ne boucle pas l’animation
+                    ref={playerRef} //on passe la référence pour contrôler l'animation
+                />
             </button>
         )
     }
