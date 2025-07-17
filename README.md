@@ -1,12 +1,24 @@
-# React + Vite
+# ✅ Todo App — UI-first & Fun with React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Un projet React où j’ai volontairement adopté une **approche UI-first** : partir de l’expérience utilisateur pour construire l’architecture technique. Cela m’a permis de mieux penser la structure des composants et de concevoir une interface fluide avant d’intégrer la logique métier.
 
-Currently, two official plugins are available:
+### 🎯 Objectifs techniques
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Organisation claire** des responsabilités entre composants parents et enfants  
+- **Persistante locale** via `localStorage` pour conserver les tâches de l’utilisateur même après rechargement  
+- Ajout d'**effets audio et visuels** pour renforcer l’interaction et rendre l’UX plus vivante  
+- Application des **bonnes pratiques React** (props, hooks, état local, composants contrôlés, etc.)
 
-## Expanding the ESLint configuration
+### 🧩 Libs utilisées
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Lib | Rôle |
+|-----|------|
+| [`use-sound`](https://www.npmjs.com/package/use-sound) | Jouer des sons pour enrichir les interactions (ajout, suppression, complétion, erreurs) |
+| [`@radix-ui/react-tooltip`](https://www.radix-ui.com/primitives/docs/components/tooltip) | Affichage d’infobulles personnalisées sur les boutons |
+| [`@lordicon/react`](https://www.npmjs.com/package/@lordicon/react) + [`lottie-web`](https://www.npmjs.com/package/lottie-web) | Intégration d’icônes animées (notamment pour la corbeille) pour dynamiser l’UI |
+| [`canvas-confetti`](https://www.npmjs.com/package/canvas-confetti) | Effets visuels 🎉 lors de la complétion totale des tâches | Mais je ne l'ai pas directement utilisé pour ne pas saturé les éffets
+
+---
+
+🎨 **Un projet où j’ai aussi pris le temps de m’amuser** en ajoutant des détails ludiques, sans perdre de vue la structure et la maintenabilité.
+
