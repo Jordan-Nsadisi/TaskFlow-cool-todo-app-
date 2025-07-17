@@ -2,7 +2,7 @@
 import { Player } from '@lordicon/react' //importation de la librairie pour les animations des icones
 import deleteAllicon from '../../assets/deleteAllicon.json' //importation de l'icone de suppression
 import { useRef } from 'react' // Import du hook useRef pour contrôler l’animation
-
+import { Tooltip } from 'react-tooltip'; // Importation de ReactTooltip pour personalier les infobulles
 
 
 export const ButtonDeleteAll = ({ deleteAllTask, tasksList }) => {
@@ -16,18 +16,16 @@ export const ButtonDeleteAll = ({ deleteAllTask, tasksList }) => {
     const handlePlay = () => { // fonction pour jouer l’animation au survol
         playerRef.current?.playFromBeginning(); // Utilisation de l’opérateur de chaînage optionnel pour éviter les erreurs si playerRef.current est null
     };
-    const handleStop = () => { // fonction pour arrêter l’animation quand la souris quitte
-        playerRef.current?.stop();
-    };
 
 
     if (tasksList.length > 0) { //si la valeur des éléments du tableau est supperieur à 0
-        return (
+        return (<>
             <button
                 className="button-delete-all"
                 onClick={handleDeleteAllTask}
+                data-tooltip-id="deleteAllTooltip" //id de l'infobulle
+                data-tooltip-content="Supprimer toutes les tâches" //contenu de l'infobulle
                 onMouseEnter={handlePlay} //on joue l'animation au survol de la souris
-                onMouseLeave={handleStop}
             >
                 <Player
                     icon={deleteAllicon}
@@ -37,6 +35,21 @@ export const ButtonDeleteAll = ({ deleteAllTask, tasksList }) => {
                     ref={playerRef} //on passe la référence pour contrôler l'animation
                 />
             </button>
+
+            <Tooltip
+                id="deleteAllTooltip"
+                place="top" //position de l’infobulle par rapport à l’élément cible
+                effect="float" //style d’apparition de l’infobulle
+                arrowColor="#ff2828"
+                className="custom-tooltip"
+                style={{
+                    backgroundColor: "#222",
+                    color: "#fff",
+                    borderRadius: "4px"
+                }}
+
+            />
+        </>
         )
     }
 
