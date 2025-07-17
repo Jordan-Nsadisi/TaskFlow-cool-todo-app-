@@ -19,7 +19,7 @@ export const ButtonDeleteAll = ({ deleteAllTask, tasksList }) => {
         playerRef.current?.playFromBeginning(); // Utilisation de l’opérateur de chaînage optionnel pour éviter les erreurs si playerRef.current est null
     };
 
-    const [playSound] = useSound(trashAll, { volume: 0.1 }) // Utilisation du hook useSound pour jouer le son de la corbeille, avec un volume de 0.5
+    const [playSound] = useSound(trashAll, { volume: 0.3 }) // Utilisation du hook useSound pour jouer le son de la corbeille, avec un volume de 0.5
 
 
     if (tasksList.length > 0) { //si la valeur des éléments du tableau est supperieur à 0

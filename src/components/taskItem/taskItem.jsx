@@ -22,7 +22,7 @@ const TaskItem = ({ task, editTask, deleteTask }) => { //props drilling depuis l
         playerRef.current?.stop();
     };
 
-    const [playSound] = useSound(deleteTaskSound, { volume: 0.1 }) // Utilisation du hook useSound pour jouer le son de la corbeille, avec un volume de 0.1
+    const [playSound] = useSound(deleteTaskSound, { volume: 0.3 }) // Utilisation du hook useSound pour jouer le son de la corbeille, avec un volume de 0.1
 
     return (
         <li

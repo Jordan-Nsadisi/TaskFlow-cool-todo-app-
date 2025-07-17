@@ -16,8 +16,8 @@ export const TaskInput = (
     const [taskTitle, setTaskTitle] = useState("") //hook pour la gestion de l'etat du titre du task
     // console.log(taskTitle);
 
-    const [playSound] = useSound(addTaskSound, { volume: 0.1 }); //on utilise le hook useSound pour jouer un son lorsque l'utilisateur clique sur le bouton d'ajout de tâche
-    const [playErrorSound] = useSound(errorClickSound4, { volume: 0.1 }); //on utilise le hook useSound pour jouer un son d'erreur
+    const [playSound] = useSound(addTaskSound, { volume: 0.3 }); //on utilise le hook useSound pour jouer un son lorsque l'utilisateur clique sur le bouton d'ajout de tâche
+    const [playErrorSound] = useSound(errorClickSound4, { volume: 0.3 }); //on utilise le hook useSound pour jouer un son d'erreur
 
     const handleInputChange = (event) => { //fonctionner qui permet de capturer ce qui est ecrit dans l'input du formulaire, elle prend en paramètre l'èvenement au changement de l'input
         // console.log(event.target.value);
@@ -59,7 +59,7 @@ export const TaskInput = (
                             || !taskTitle.trim() // ou la valeur n'est pas un caractère mais un espace
                             ? "button-primary-disabled" : "button-primary"
                     }
-                    // disabled={!taskTitle} //le bouton est désactivé si taskTitle est vide, c'est-à-dire que l'utilisateur n'a pas encore saisi de titre
+                // disabled={!taskTitle} //le bouton est désactivé si taskTitle est vide, c'est-à-dire que l'utilisateur n'a pas encore saisi de titre
                 >
                     Ajouter
                 </button>
