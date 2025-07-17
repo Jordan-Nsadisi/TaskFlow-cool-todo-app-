@@ -3,6 +3,9 @@ import styles from "./taskItem.module.css"
 import { Player } from '@lordicon/react' //importation de la librairie pour les animations des icones
 import deleteIcon from '../../assets/deleteIcon.json' //importation de l'icone de suppression
 import { useRef } from 'react' // Import du hook useRef pour contrôler l’animation
+import useSound from 'use-sound'; // Importation du hook useSound pour jouer un son lors de l'interaction avec le bouton, importer depuis la librairie use-sound
+import deleteTaskSound from '../../assets/sounds/deleteTaskSound.mp3'; // Importation du son de la corbeille
+
 
 const TaskItem = ({ task, editTask, deleteTask }) => { //props drilling depuis le parent le plus haut 'TaskContainer', sauf 'task' qui est l'objet contenant les infos de chaque tâche, mappé deouis le composant TaskList
 
@@ -18,6 +21,8 @@ const TaskItem = ({ task, editTask, deleteTask }) => { //props drilling depuis l
     const handleStop = () => { // fonction pour arrêter l’animation quand la souris quitte
         playerRef.current?.stop();
     };
+
+    const [playSound] = useSound(deleteTaskSound, { volume: 0.1 }) // Utilisation du hook useSound pour jouer le son de la corbeille, avec un volume de 0.1
 
     return (
         <li
@@ -38,6 +43,7 @@ const TaskItem = ({ task, editTask, deleteTask }) => { //props drilling depuis l
                 onClick={(event) => { //au clique du bouton...
                     event.stopPropagation() // on stop la propagation de l'evenement plus haut
                     deleteTask(task.id) //on joue la fonction de suppression et on lui passe l'id de la tache concerner
+                    playSound(); // Joue le son au clic
                 }}
                 onMouseEnter={handlePlay} //on joue l'animation au survol de la souris
                 onMouseLeave={handleStop}
