@@ -5,6 +5,8 @@ import deleteIcon from '../../assets/deleteIcon.json' //importation de l'icone d
 import { useRef } from 'react' // Import du hook useRef pour contrôler l’animation
 import useSound from 'use-sound'; // Importation du hook useSound pour jouer un son lors de l'interaction avec le bouton, importer depuis la librairie use-sound
 import deleteTaskSound from '../../assets/sounds/deleteTaskSound.mp3'; // Importation du son de la corbeille
+import changeStatusTask from '../../assets/sounds/changeStatusTask.mp3'; // Importation du son de la corbeille
+
 
 
 const TaskItem = ({ task, editTask, deleteTask }) => { //props drilling depuis le parent le plus haut 'TaskContainer', sauf 'task' qui est l'objet contenant les infos de chaque tâche, mappé deouis le composant TaskList
@@ -22,12 +24,16 @@ const TaskItem = ({ task, editTask, deleteTask }) => { //props drilling depuis l
         playerRef.current?.stop();
     };
 
-    const [playSound] = useSound(deleteTaskSound, { volume: 0.3 }) // Utilisation du hook useSound pour jouer le son de la corbeille, avec un volume de 0.1
+    const [playSound] = useSound(deleteTaskSound, { volume: 0.3 }) // Utilisation du hook useSound pour jouer le son de la corbeille, avec un volume de 0.3
+    const [playChangeStatusSound] = useSound(changeStatusTask, { volume: 0.3 }) // Utilisation du hook useSound pour jouer le son de changement de statut, avec un volume de 0.3
 
     return (
         <li
             className={`${styles.container} ${task?.isCompleted ? styles.success : styles.default}`}
-            onClick={() => editTask(task.id, !task.isCompleted)} //on joue la fonction d'edition et on lui passe l'id de la tache et son status different à chaque clique, en gros on change le statut complété de la tache, à l'évenement au clique
+            onClick={() => {
+                editTask(task.id, !task.isCompleted);
+                playChangeStatusSound();
+            }} //on joue la fonction d'edition et on lui passe l'id de la tache et son status different à chaque clique, en gros on change le statut complété de la tache, à l'évenement au clique
         >
             <div className={styles.item}>
                 <div className={`${styles.id} ${task?.isCompleted ? styles.idSuccess : styles.idDefault}`}>
