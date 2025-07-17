@@ -1,6 +1,8 @@
 //ce composant est utiliser pour afficher le champ de saisie des tâches
 import { useState } from "react";
 import styles from "./taskInput.module.css"
+import useSound from 'use-sound'; // Importation du hook useSound pour jouer un son lors de l'interaction avec le bouton, importer depuis la librairie use-sound
+import addTaskSound from '../../assets/sounds/addTaskSound.mp3';
 
 export const TaskInput = (
     {
@@ -12,6 +14,8 @@ export const TaskInput = (
     const [taskTitle, setTaskTitle] = useState("") //hook pour la gestion de l'etat du titre du task
     // console.log(taskTitle);
 
+    const [playSound] = useSound(addTaskSound, { volume: 0.1 }); //on utilise le hook useSound pour jouer un son lorsque l'utilisateur clique sur le bouton d'ajout de tâche
+
     const handleInputChange = (event) => { //fonctionner qui permet de capturer ce qui est ecrit dans l'input du formulaire, elle prend en paramètre l'èvenement au changement de l'input
         // console.log(event.target.value);
         setTaskTitle(event.target.value) //met à jour la valeur du titre du task(tâche)
@@ -21,6 +25,8 @@ export const TaskInput = (
         event.preventDefault(); //empêche le comportement par défaut du formulaire qui consiste à recharger la page
 
         if (taskTitle.trim()) { // on ajoute la tâche et reset la valeur de l'input si taskTitle existe sans espace
+            playSound(); //on joue le son d'ajout de tâche
+            // new Audio(addTaskSound).play(); // version brute
             addTask(taskTitle) // on a deja la fonction d'ajout de tâches récupéré en props depuis le parent, donc on la joue et on lui passe le titre(ce qui corespond à la valeur de l'input au moment de la soumission, le titre qui est mis à jour par la fonction 'handleInputChange' qui ecoute les évenement de l'input) 
             setTaskTitle("") //et on reset la valeur de l'input
             // console.log("Task added:", taskTitle); //affiche dans la console le titre de la tâche ajoutée
@@ -32,7 +38,7 @@ export const TaskInput = (
     }
 
     return (
-        <div className={`box ${styles.element}`}>
+        <div className={`box ${styles.element}`} >
             <h2 className={styles.title}>🎯 Ajoute ta prochaine tâche</h2>
             <form className={styles.container} onSubmit={handleAddTask}>
                 <input
@@ -46,14 +52,14 @@ export const TaskInput = (
                     type="submit"
                     className={
                         taskTitle.length === 0 // si la valeur du titre est de 0
-                        || !taskTitle.trim() // ou la valeur n'est pas un caractère mais un espace
-                        ? "button-primary-disabled" : "button-primary"
+                            || !taskTitle.trim() // ou la valeur n'est pas un caractère mais un espace
+                            ? "button-primary-disabled" : "button-primary"
                     }
                     disabled={!taskTitle} //le bouton est désactivé si taskTitle est vide, c'est-à-dire que l'utilisateur n'a pas encore saisi de titre
                 >
                     Ajouter
                 </button>
             </form>
-        </div>
+        </div >
     )
 }
