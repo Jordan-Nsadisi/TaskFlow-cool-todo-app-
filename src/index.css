@@ -132,6 +132,7 @@ a:focus-visible {
   color: #ff2828;
   float: right;
   margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 .button-delete-all:hover {
