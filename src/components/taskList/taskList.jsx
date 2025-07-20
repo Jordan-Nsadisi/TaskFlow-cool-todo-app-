@@ -42,7 +42,7 @@ export const TaskLists = (
 
     return ( //sinon affiche ceci
         <div className='box'>
-            <h2 className={StyleSheet.emptyState}>
+            <h2 className={styles.emptyState}>
                 👋 Salut, tu n'as rien à faire ! Profite de ton temps libre !
             </h2>
         </div>

@@ -6,7 +6,12 @@ export const Header = () => {
     return (
         <div className={styles.container}>
             <div className={styles.titleContainer}>
-                <img src={reactLogo} alt="logo" width={50} height={50} />
+                <img 
+                src={reactLogo} 
+                alt="logo" 
+                width={50} 
+                height={50}
+                 />
 
                 <div>
                     <h1>TaskFlow</h1>
