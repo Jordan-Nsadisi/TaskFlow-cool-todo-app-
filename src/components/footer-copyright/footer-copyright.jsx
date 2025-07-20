@@ -1,7 +1,7 @@
 import styles from "./footer-copyright.module.css"
 
 
-export const FooterCopyright = ({className}) => {
+export const FooterCopyright = () => {
   const date = new Date().getFullYear()
 
   return (
