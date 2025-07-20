@@ -140,6 +140,10 @@ a:focus-visible {
   border-color: rgba(241, 59, 59, 0.35);
 }
 
+.footer {
+  margin-top: 25px;
+}
+
 
 
 @media (prefers-color-scheme: light) {

@@ -1,0 +1,13 @@
+.container {
+    position: fixed;
+    bottom: 0;
+    width: 90%;
+    padding-bottom: 10px;
+}
+
+.link {
+color: rgba(255, 255, 255, 0.548);
+}
+.link:hover {
+color: rgba(255, 255, 255, 0.856);
+}
