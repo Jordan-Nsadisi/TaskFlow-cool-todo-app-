@@ -1,5 +1,5 @@
 // le composant taskList est utilisé pour afficher la liste des tâches
-import TaskItem from "../taskItem/taskItem"
+import { TaskItem } from "../taskItem/taskItem"
 import styles from "./taskList.module.css"
 
 
