@@ -8,7 +8,7 @@ export const FooterCopyright = () => {
     <footer
       className={styles.container}
     >
-      <div className={styles.link}>
+      <div className={styles.linkText}>
         <span>Copyright ©{" "}</span>
         {date}
         <a

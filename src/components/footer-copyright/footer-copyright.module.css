@@ -3,6 +3,10 @@
     margin-top: 15%;
 }
 
+.linkText {
+color: rgba(255, 255, 255, 0.548);
+}
+
 .link {
 color: rgba(255, 255, 255, 0.548);
 }
